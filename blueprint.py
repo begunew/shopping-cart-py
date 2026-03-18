@@ -3,22 +3,24 @@ class Item:
         self.name = name
         self.price = price
 
+
 class ShoppingCart:
     def __init__(self):
         self.items = []
 
     def add_item(self, item):
         self.items.append(item)
-        print(f"Item added to cart: {item.name}")
+        return f"Item added to cart: {item.name}"
 
     def show_items(self):
-        print("Items in the cart:")
+        output = ["Items in the cart:"]
         for item in self.items:
-            print("-", item.name)
+            output.append(f"- {item.name}")
+        return "\n".join(output)
     
     def remove_item(self, item):
-        self.items.remove(item)
-        print(item.name, "removed from the cart.")
+        self.items.remove(item)  # still crashes if not found (keep it as is)
+        return f"{item.name} removed from the cart."
 
 # Creating new objects from Item class
 item1 = Item("cola", 3000)
